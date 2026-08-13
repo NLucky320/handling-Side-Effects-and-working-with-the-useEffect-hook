@@ -27,12 +27,12 @@ function App() {
   }, []);
 
   function handleStartRemovePlace(id) {
-   setModalIsOpen(true);
+    setModalIsOpen(true);
     selectedPlace.current = id;
   }
 
   function handleStopRemovePlace() {
-setModalIsOpen(false);
+    setModalIsOpen(false);
   }
 
   function handleSelectPlace(id) {
@@ -43,18 +43,15 @@ setModalIsOpen(false);
       const place = AVAILABLE_PLACES.find((place) => place.id === id);
       return [place, ...prevPickedPlaces];
     });
+    localStorage.setItem('selectedPlaces', JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)));
 
- 
-
-      localStorage.setItem('selectedPlaces', JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current)));
-    
   }
 
   function handleRemovePlace() {
     setPickedPlaces((prevPickedPlaces) =>
       prevPickedPlaces.filter((place) => place.id !== selectedPlace.current)
     );
-   setModalIsOpen(false);
+    setModalIsOpen(false);
   }
 
   return (
