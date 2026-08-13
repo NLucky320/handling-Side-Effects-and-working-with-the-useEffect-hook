@@ -6,10 +6,11 @@ useEffect(()=> {
 const timer = setTimeout(() => {
   onConfirm();
 }, 3000);
+
 return () => {
   clearTimeout(timer);
-}
-}, []);
+};
+}, [onConfirm]);
 
 
   return (
